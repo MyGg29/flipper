@@ -1,0 +1,63 @@
+<html>
+
+<head>
+  <title>Express</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="javascripts/matter.min.js"></script>
+</head>
+
+<body>
+  <h1>My fucking flipper 🌞</h1>
+</body>
+<script>
+  // module aliases
+  var Engine = Matter.Engine,
+    Render = Matter.Render,
+    World = Matter.World,
+    Bodies = Matter.Bodies;
+
+  // create an engine
+  var engine = Engine.create();
+
+  // create a renderer
+  var render = Render.create({
+    element: document.body,
+    engine: engine
+  });
+
+  // create two boxes and a ground
+  var boxA = Bodies.rectangle(400, 200, 80, 80);
+  var boxB = Bodies.rectangle(450, 50, 80, 80);
+  var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+
+  // add all of the bodies to the world
+  World.add(engine.world, [boxA, boxB, ground]);
+
+  // run the engine
+  Engine.run(engine);
+
+  // run the renderer
+  Render.run(render);  
+</script>
+<style>
+  @keyframes changeColor {
+    0% {
+      background-color: red;
+    }
+    50% {        
+      background-color: green;
+    }
+    100% {
+      background-color: blue;
+    }
+  }
+  body{
+    animation: changeColor 1s infinite alternate
+  }
+  h1{
+    color: white;
+    text-align: center;
+    font-size: 3em;
+  }
+</style>
+</html>
